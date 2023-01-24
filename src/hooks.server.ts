@@ -1,14 +1,17 @@
 import type { Handle } from '@sveltejs/kit';
-import { pool, init } from '$lib/server/db';
+import clientPromise from '$lib/server/db';
+import init from '$lib/server/db/init';
 
-// initialize database
+// initialize the database once when the server starts
 init();
 
 export const handle = (async ({ event, resolve }) => {
-	const client = await pool.connect();
+	// inject mongo database as db
+	const client = await clientPromise;
+	const db = client.db();
 	// @ts-ignore
-	event.locals.db = client;
+	event.locals.db = db;
+
 	const response = await resolve(event);
-	client.release();
 	return response;
 }) satisfies Handle;

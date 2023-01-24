@@ -11,15 +11,14 @@
 		"test": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"start:db": "docker run --name db -p 5432:5432 --restart unless-stopped -e POSTGRES_PASSWORD=secret -d postgres",
-		"stop:db": "docker stop db",
-		"remove:db": "docker rm -f db"
+		"start:db": "docker run --name mongodb -p 27017:27017 -d mongo",
+		"stop:db": "docker stop mongodb",
+		"remove:db": "docker rm -f mongodb"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^1.0.0",
 		"@sveltejs/kit": "^1.0.0",
 		"@tailwindcss/forms": "^0.5.3",
-		"@types/pg": "^8.6.6",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"autoprefixer": "^10.4.13",
@@ -30,7 +29,6 @@
 		"postcss": "^8.4.21",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.8.1",
-		"sql-template-strings": "^2.2.2",
 		"svelte": "^3.54.0",
 		"svelte-check": "^3.0.1",
 		"tailwindcss": "^3.2.4",
@@ -41,6 +39,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"pg": "^8.8.0"
+		"mongodb": "^4.13.0"
 	}
 }
