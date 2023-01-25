@@ -36,7 +36,7 @@ const auth = SvelteKitAuth({
 // initialize the database once when the server starts
 init();
 
-const db = (async ({ event, resolve }) => {
+const db: Handle = async ({ event, resolve }) => {
 	// inject mongo database as db
 	const client = await clientPromise;
 	const db = client.db();
@@ -45,6 +45,6 @@ const db = (async ({ event, resolve }) => {
 
 	const response = await resolve(event);
 	return response;
-}) satisfies Handle;
+};
 
 export const handle = sequence(auth, db);
