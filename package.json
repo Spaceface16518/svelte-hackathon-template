@@ -11,7 +11,8 @@
 		"test": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"start:db": "docker run --name mongodb -p 27017:27017 -d mongo",
+		"create:db": "docker run --name mongodb -p 27017:27017 -d mongo",
+		"start:db": "docker start mongodb",
 		"stop:db": "docker stop mongodb",
 		"remove:db": "docker rm -f mongodb"
 	},
