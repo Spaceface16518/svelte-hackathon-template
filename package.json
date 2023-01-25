@@ -39,6 +39,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@auth/core": "^0.3.0",
+		"@auth/sveltekit": "^0.2.0",
+		"heroicons": "^2.0.13",
 		"mongodb": "^4.13.0"
 	}
 }
